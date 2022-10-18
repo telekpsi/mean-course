@@ -10,10 +10,10 @@ RUN npm ci
 
 # Copy the rest of the files into the container and build
 COPY . .
-RUN node server.js
 RUN npm run build
 
 FROM nginx:alpine
 COPY --from=build /source/dist/meancourse /usr/share/nginx/html
 COPY --from=build /source/nginx.conf /etc/nginx/conf.d/
 EXPOSE 8080
+CMD node server.js
