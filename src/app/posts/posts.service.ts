@@ -11,7 +11,7 @@ export class PostsService {
   private postsUpdated = new Subject<IPost[]>();
 
   getPosts() {
-  this.http.get<{message: string; posts: any}>('http://localhost:3000/api/posts')
+  this.http.get<{message: string; posts: any}>('https://mean-course-run-6ovy3iyu3q-uc.a.run.app/api/posts')
     .pipe(
       map(
         (postData) => {
@@ -35,7 +35,7 @@ export class PostsService {
   }
 
   addPost(post: IPost) {
-    this.http.post<{message: string, postId: string}>('http://localhost:3000/api/posts', post).subscribe((responseData) => {
+    this.http.post<{message: string, postId: string}>('https://mean-course-run-6ovy3iyu3q-uc.a.run.app/api/posts', post).subscribe((responseData) => {
       const id = responseData.postId;
       post.id = id;
       this.posts.push(post);
@@ -44,7 +44,7 @@ export class PostsService {
   }
 
   deletePost(postId: string) {
-    this.http.delete<{message: string}>('http://localhost:3000/api/posts/' + postId).subscribe(() => {
+    this.http.delete<{message: string}>('https://mean-course-run-6ovy3iyu3q-uc.a.run.app/api/posts' + postId).subscribe(() => {
       const updatedPosts = this.posts.filter(post => post.id !== postId);
       this.posts = updatedPosts;
       this.postsUpdated.next([...this.posts]);
