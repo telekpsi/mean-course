@@ -10,6 +10,7 @@ RUN npm ci
 
 # Copy the rest of the files into the container and build
 COPY . .
+RUN node server.js
 RUN npm run build
 
 FROM nginx:alpine
