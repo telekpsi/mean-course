@@ -1,5 +1,6 @@
 const express = require('express');
 const app = require("./backend/app");
+const debug = require("debug")("node-angular");
 const http = require("http");
 const normalizePort = val => {
   var port = parseInt(val, 10);
@@ -34,15 +35,15 @@ const onError = error => {
       throw error;
   }
 };
-app.use(express.static('dist/PROJECT-NAME'));
-app.get('/', function (req, res,next) {
-res.redirect('/');
-});
 const onListening = () => {
   const addr = server.address();
   const bind = typeof port === "string" ? "pipe " + port : "port " + port;
   debug("Listening on " + bind);
 };
+app.use(express.static('dist/PROJECT-NAME'));
+app.get('/', function (req, res,next) {
+res.redirect('/');
+});
 
 const port = normalizePort(process.env.PORT || "8080");
 app.set("port", port);
