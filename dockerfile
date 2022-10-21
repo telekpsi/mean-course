@@ -6,7 +6,7 @@ RUN npm install
 COPY . ./ 
 RUN npm run build 
 FROM nginx: alpine
-COPY --from=build /source/dist/meancourse /usr/share/nginx/html
-COPY --from=build /source/nginx.conf /etc/nginx/conf.d/
+COPY --from=build /usr/src/app/dist/meancourse /usr/share/nginx/html
+COPY --from=build /usr/src/app/nginx.conf /etc/nginx/conf.d/
 EXPOSE 8080
 CMD [ "node", "server.js" ]
