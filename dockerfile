@@ -8,4 +8,3 @@ FROM nginx:alpine
 COPY --from=build /usr/src/app/dist/meancourse /usr/share/nginx/html
 COPY --from=build /usr/src/app/nginx.conf /etc/nginx/conf.d/
 EXPOSE 8080
-CMD [ "node", "server.js" ]
