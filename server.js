@@ -1,3 +1,4 @@
+const express = require('express');
 const app = require("./backend/app");
 const http = require("http");
 app.use(express.static('dist/PROJECT-NAME'));
