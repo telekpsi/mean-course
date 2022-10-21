@@ -4,7 +4,7 @@ COPY package*.json ./
 RUN npm ci
 COPY . ./ 
 RUN npm run build 
-FROM nginx: alpine
+FROM nginx:alpine
 COPY --from=build /usr/src/app/dist/meancourse /usr/share/nginx/html
 COPY --from=build /usr/src/app/nginx.conf /etc/nginx/conf.d/
 EXPOSE 8080
