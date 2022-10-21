@@ -7,5 +7,4 @@ app.get('/', function (req, res,next) {
 res.redirect('/');
 });
 
-const server = http.createServer(app);
-server.listen(8080);
+app.listen(8080);
